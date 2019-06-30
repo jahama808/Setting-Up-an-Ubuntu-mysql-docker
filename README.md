@@ -113,3 +113,18 @@ which give the output
             }
 ```
 
+The problem with this is that if you rebuild this container on another system the address could be different.
+To solve that, we create our own docker network (which includes the build in DNS feature).
+
+```
+docker network create ourDevNetwork
+```
+
+To get our containers on our network, we need to stop our current containers (and delete them) and then add the "--network" option:
+
+```
+docker container rm -f ubuntuDevEnv
+docker container rm -f ubuntuSQLDevEnv
+docker run -it  -v $(pwd):/home/jay --name ubuntuDevEnv --network ourDevNetowrk test bash
+docker run --name ubuntuSQLDevEnv -e MYSQL_ROOT_PASSWORD=theROOTpasswordisNULL -d --network ourDevNetwork mariadb:latest
+```
