@@ -43,7 +43,7 @@ That creates our ubuntu 18.04 docker image with python3 and pip3, and mysql supp
 
 To create the container:
 ```
-docker run -it  -v $(pwd):/home/jay --name ubuntuDevEnv bash test
+docker run -it  -v $(pwd):/home/jay --name ubuntuDevEnv test bash
 
 ```
 
