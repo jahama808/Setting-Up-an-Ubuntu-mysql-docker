@@ -5,7 +5,9 @@ This is a guide on setting up a development environment for python coding with c
 I'll be using Docker-Compose to make this quick and painless, but will go through the creating of the containers
 using the regular docker command.
 
-### What we want in this container
+## The UBUNTU 18.04 Container
+
+### What we want in this image
 
 1. Ubuntu 18.04 (or later)
 2. python 3
@@ -46,5 +48,33 @@ To create the container:
 docker run -it  -v $(pwd):/home/jay --name ubuntuDevEnv test bash
 
 ```
+
+## The mariadb/mysql Container
+
+Setting up the mysql/mariadb container is pretty straight forward.   You can have it do as little or as
+much as you want.  For this exercise, we'll have it build our root password and then stop.  The 
+rest of the database buildout can be done from an interactive session and then using the standard
+mysql command line:
+
+For this, we can pretty much define everything in the "docker run" command.
+
+```
+docker run --name ubuntuSQLDevEnv -e MYSQL_ROOT_PASSWORD=theROOTpasswordisNULL -d mariadb:latest
+```
+
+### What's being built:
+
+--name
+..Assign a custom name to this container
+-e
+..Set an environment variable, which is the mysql root password.
+...This is the password you use when you do a "mysql -u root -p" command in the cli
+-d
+..Run in daemon mode
+-mariadb:latest
+..Grab the latest mariadb image from docker hub
+
+
+### Accessing our 
 
 
