@@ -92,5 +92,24 @@ docker exec -it ubuntuSQLDevEnv bash
 3. bash
   * Give us a bash prompt
 
+## Creating a private network for our environment
 
+By default docker puts the containers on a default network, but you'll need to know the IP addresses
+of each container if you want them to talk.  So if you're python script needs to talk to the database, you
+have to use the IP.  That can be found by using the "network inspect" command
+
+```
+docker network inspect bridge
+```
+which give the output
+```
+"Containers": {
+            "d283eaaedbfa696c0d3c120e72b89160ed8dbb89b52a223c4451945cbd0e225d": {
+                "Name": "ubuntuSQLDevEnv",
+                "EndpointID": "e6a72b94f3378474788abade4dc837862bb1ddaced76595b8c1476754fc88079",
+                "MacAddress": "02:42:ac:11:00:02",
+                "IPv4Address": "172.17.0.2/16",
+                "IPv6Address": ""
+            }
+            ```
 
