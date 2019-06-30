@@ -83,7 +83,7 @@ To access the container, we'll use the "exec" command:
 docker exec -it ubuntuSQLDevEnv bash
 ```
 
-###What's being built:
+### What's being built:
 
 1. -it
   * interactive mode
