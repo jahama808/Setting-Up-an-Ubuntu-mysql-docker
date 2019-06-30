@@ -125,6 +125,11 @@ To get our containers on our network, we need to stop our current containers (an
 ```
 docker container rm -f ubuntuDevEnv
 docker container rm -f ubuntuSQLDevEnv
-docker run -it  -v $(pwd):/home/jay --name ubuntuDevEnv --network ourDevNetwork test bash
+docker run -d  -v $(pwd):/home/jay --name ubuntuDevEnv --network ourDevNetwork test 
 docker run --name ubuntuSQLDevEnv -e MYSQL_ROOT_PASSWORD=theROOTpasswordisNULL -d --network ourDevNetwork mariadb:latest
+```
+Note that we also switched our ubuntu image to run as a daemon now.  We can jump into it using the "exec" option again:
+
+```
+docker exec -it ubuntuDevEnv bash
 ```
