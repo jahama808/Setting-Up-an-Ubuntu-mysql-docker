@@ -65,14 +65,14 @@ docker run --name ubuntuSQLDevEnv -e MYSQL_ROOT_PASSWORD=theROOTpasswordisNULL -
 ### What's being built:
 
 1.--name
-..* Assign a custom name to this container
+  * Assign a custom name to this container
 2.-e
-..* Set an environment variable, which is the mysql root password.
-...* This is the password you use when you do a "mysql -u root -p" command in the cli
+  * Set an environment variable, which is the mysql root password.
+   * This is the password you use when you do a "mysql -u root -p" command in the cli
 3.-d
-..* Run in daemon mode
+  * Run in daemon mode
 4.-mariadb:latest
-..* Grab the latest mariadb image from docker hub
+  * Grab the latest mariadb image from docker hub
 
 
 ### Accessing our mariadb container
@@ -86,11 +86,11 @@ docker exec -it ubuntuSQLDevEnv bash
 ###What's being built:
 
 1. -it
-..* interactive mode
+  * interactive mode
 2. ubuntuSQLDevEnv
-..* the name of our container
+  * the name of our container
 3. bash
-..* Give us a bash prompt
+  * Give us a bash prompt
 
 
 
