@@ -125,7 +125,14 @@ To get our containers on our network, we need to stop our current containers (an
 ```
 docker container rm -f ubuntuDevEnv
 docker container rm -f ubuntuSQLDevEnv
-docker run -it  -v $(pwd):/home/jay --name ubuntuDevEnv --network ourDevNetwork test bash
+
 docker run --name ubuntuSQLDevEnv -e MYSQL_ROOT_PASSWORD=theROOTpasswordisNULL -d --network ourDevNetwork mariadb:latest
+docker run -it  -v $(pwd):/home/jay --name ubuntuDevEnv --network ourDevNetwork test bash
+
 ```
+That's it.  
+
+With this setup, you can edit the code in the directory you mapped the /home/jay to in the docker run command instead of doing it in the cli of the container.  You'll still need to execute the code from within the container though.
+
+Also important, when you build the python code and have to define the host of the mysql database, use the name of the mysql container you built.  The docker network you built will resolve that to the proper IP address automatically!
 
